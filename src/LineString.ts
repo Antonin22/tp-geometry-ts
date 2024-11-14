@@ -1,3 +1,4 @@
+// LineString.ts
 import Coordinate from "./Coordinate";
 import Geometry from "./Geometry";
 import Point from "./Point";
@@ -6,7 +7,7 @@ export default class LineString implements Geometry {
     private points: Point[];
 
     constructor(points?: Point[]) {
-        this.points = points ?? []; 
+        this.points = points ? points.map(point => point.clone()) : [];
     }
 
     getType(): string {
@@ -18,7 +19,11 @@ export default class LineString implements Geometry {
     }
 
     translate(dx: number, dy: number): void {
-        this.points.forEach(points => points.translate(dx, dy))
+        this.points.forEach(point => point.translate(dx, dy));
+    }
+
+    clone(): LineString {  
+        return new LineString(this.points.map(point => point.clone()));
     }
 
     getNumPoints(): number {
@@ -26,6 +31,6 @@ export default class LineString implements Geometry {
     }
 
     getPointN(n: number): Point | undefined {
-        return this.points[n]; 
+        return this.points[n];
     }
 }
