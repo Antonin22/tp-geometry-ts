@@ -3,7 +3,7 @@ import { expect } from "chai";
 import Point from "../src/Point";
 import LineString from "../src/LineString";
 
-describe("test Point", () => {
+describe("test LineString", () => {
     it("test Line String", () => {
         const p1 = new Point([3.0,4.0]);
         const p2 = new Point([4.0,5.0]);
@@ -19,6 +19,18 @@ describe("test Point", () => {
         const l1 = new LineString([p1, p2, p3]);
         expect(l1.getPointN(1)?.getCoordinate()).to.deep.equal(p2.getCoordinate());
     });
+
+    it("test getType LineString", () => {
+        const p1 = new Point([1.0, 1.0]);
+        const p2 = new Point([2.0, 2.0]);
+        const l1 = new LineString([p1, p2]);
+        expect(l1.getType()).to.equal("LineString");
+    })
+
+    it("test isEmpty for LineString", () => {
+        const l1 = new LineString([]);
+        expect(l1.isEmpty()).to.be.true;
+    })
 
     it("test a copy of Line String", () => {
         const p1 = new Point([3.0,4.0]);

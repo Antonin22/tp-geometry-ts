@@ -19,6 +19,11 @@ describe("test Point", () => {
         expect(p.isEmpty()).to.be.false;
     });
 
+    it("test getType of point", () => {
+        const p = new Point([1.0, 1.0]);
+        expect(p.getType()).to.equal("Point");
+    })
+
     it("test to translate a point", () => {
         const p = new Point([3.0, 4.0]);
         p.translate(1.0, 1.0);
