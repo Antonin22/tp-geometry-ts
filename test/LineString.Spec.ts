@@ -19,4 +19,9 @@ describe("test Point", () => {
         const l1 = new LineString([p1, p2, p3]);
         expect(l1.getPointN(1)).to.equal(p2);
     });
+
+    it("test Line String is empty", () => {
+        const l1 = new LineString();
+        expect(l1.getPointN(1)).to.equal(undefined);
+    });
 });

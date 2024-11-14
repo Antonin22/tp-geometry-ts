@@ -5,11 +5,15 @@ export default class Point implements Geometry{
   private coordinate?: Coordinate;
 
   constructor(coordinate?: Coordinate) {
-    this.coordinate = coordinate ;
+    this.coordinate = coordinate ?? [NaN, NaN];
   }
 
   getType(): string {
     return "Point";
+  }
+
+  isEmpty(): boolean {
+    return this.coordinate === undefined || isNaN(this.coordinate[0]) || isNaN(this.coordinate[1]);
   }
 
   getCoordinate(): Coordinate {
@@ -17,11 +21,11 @@ export default class Point implements Geometry{
   }
 
   x(): number {
-    return this.coordinate ? this.coordinate[0] : Number.NaN ;
+    return !this.isEmpty() ? this.coordinate[0] : Number.NaN ;
   }
 
   y(): number {
-    return this.coordinate ? this.coordinate[1] : Number.NaN ;
+    return !this.isEmpty() ? this.coordinate[1] : Number.NaN ;
   }
 
 }
