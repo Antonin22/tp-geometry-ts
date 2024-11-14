@@ -24,4 +24,13 @@ describe("test Point", () => {
         const l1 = new LineString();
         expect(l1.getPointN(1)).to.equal(undefined);
     });
+
+    it("test translate LineString", () => {
+        const p1 = new Point([2.0, 2.0]);
+        const p2 = new Point([3.0, 3.0]);
+        const l1 = new LineString([p1, p2]);
+        l1.translate(1.0, 1.0);
+        expect(l1.getPointN(0)?.getCoordinate()).to.deep.equal([3.0, 3.0]);
+        expect(l1.getPointN(1)?.getCoordinate()).to.deep.equal([4.0, 4.0]);
+    });
 });
