@@ -59,4 +59,10 @@ describe("test Point", () => {
         expect(copy_p.y()).to.equal(3.0);
         expect(p.isEmpty()).to.be.false;
     });
+
+    it("test getEnvelope of a point", () => {
+        const p = new Point([2.0, 3.0]);
+        const envelope = p.getEnvelope();
+        expect(envelope.toString()).to.equal("2,3,2,3");
+    })
 });

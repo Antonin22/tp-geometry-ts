@@ -1,5 +1,7 @@
 // LineString.ts
 import Coordinate from "./Coordinate";
+import Envelope from "./Envelope";
+import EnvelopeBuilder from "./EnvelopeBuilder";
 import Geometry from "./Geometry";
 import Point from "./Point";
 
@@ -24,6 +26,17 @@ export default class LineString implements Geometry {
 
     clone(): LineString {  
         return new LineString(this.points.map(point => point.clone()));
+    }
+
+    getEnvelope(): Envelope {
+        const builder = new EnvelopeBuilder();
+        this.points.forEach(point => {
+            const coordinate = point.getCoordinate();
+            if(coordinate) {
+                builder.insert(coordinate);
+            }
+        });
+        return builder.build();
     }
 
     getNumPoints(): number {
