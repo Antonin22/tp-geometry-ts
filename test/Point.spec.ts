@@ -1,6 +1,7 @@
 import "mocha";
 import { expect } from "chai";
 import Point from "../src/Point";
+import LineString from "../src/LineString";
 
 describe("test Point", () => {
     it("test default constructor", () => {
