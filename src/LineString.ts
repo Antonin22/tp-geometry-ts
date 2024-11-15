@@ -6,11 +6,13 @@ import Geometry from "./Geometry";
 import Point from "./Point";
 import GeometryVisitor from "./GeometryVisitor";
 import LogGeometryVisitor from "./LogGeometryVisitor";
+import AbstractGeometry from "./AbstractGeometry";
 
-export default class LineString implements Geometry {
+export default class LineString extends AbstractGeometry {
     private points: Point[];
 
     constructor(points?: Point[]) {
+        super();
         this.points = points ? points.map(point => point.clone()) : [];
     }
 

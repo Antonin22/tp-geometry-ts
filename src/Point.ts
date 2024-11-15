@@ -4,11 +4,13 @@ import Geometry from "./Geometry";
 import EnvelopeBuilder from "./EnvelopeBuilder";
 import GeometryVisitor from "./GeometryVisitor";
 import LogGeometryVisitor from "./LogGeometryVisitor";
+import AbstractGeometry from "./AbstractGeometry";
 
-export default class Point implements Geometry{
+export default class Point extends AbstractGeometry{
   private coordinate?: Coordinate;
 
   constructor(coordinate?: Coordinate) {
+    super();
     this.coordinate = coordinate ?? [NaN, NaN];
   }
 
