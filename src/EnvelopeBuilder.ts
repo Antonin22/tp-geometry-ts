@@ -23,7 +23,7 @@ export default class EnvelopeBuilder {
             this.xMax === undefined ||
             this.yMax === undefined 
         ) {
-            throw new Error("No coordinates to calculate envelope");
+            throw new Error("IL n'Y A PAS DE COORDONNEE, IL FAUT EN RENTRER !!!");
         }
 
         const bottomLeft: Coordinate = [this.xMin, this.yMin];

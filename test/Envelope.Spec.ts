@@ -22,7 +22,7 @@ describe("test EnvelopeBuilder", () => {
 
     it("test if no coordinates", () => {
         const builder = new EnvelopeBuilder();
-        expect(() => builder.build()).to.throw("No coordinates to calculate envelope");
+        expect(() => builder.build()).to.throw("IL n'Y A PAS DE COORDONNEE, IL FAUT EN RENTRER !!!");
     });
 
     it("test Envelope getters", () => {
