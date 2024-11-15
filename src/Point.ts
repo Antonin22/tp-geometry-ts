@@ -2,6 +2,8 @@ import Coordinate from "./Coordinate";
 import Envelope from "./Envelope";
 import Geometry from "./Geometry";
 import EnvelopeBuilder from "./EnvelopeBuilder";
+import GeometryVisitor from "./GeometryVisitor";
+import LogGeometryVisitor from "./LogGeometryVisitor";
 
 export default class Point implements Geometry{
   private coordinate?: Coordinate;
@@ -30,6 +32,10 @@ export default class Point implements Geometry{
   clone(): Point {
     return new Point (this.coordinate? [...this.coordinate] : undefined)
   }
+
+  accept(visitor: LogGeometryVisitor): void {
+    visitor.visitPoint(this);
+}
 
   getEnvelope(): Envelope {
     const builder = new EnvelopeBuilder();
